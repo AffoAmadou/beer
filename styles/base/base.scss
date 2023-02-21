@@ -1,0 +1,34 @@
+*,
+*::after,
+*::before {
+    box-sizing : border-box;
+    user-select: none
+}
+
+html {
+    // @extend %cover;
+    $vw        : 100vw;
+    font-size  : calc($vw / 1920px * 10px);
+    color      : black;
+    line-height: 1;
+
+    //    position         : fixed; //!Per rimuovere lo scroll 
+    //    overflow      : hidden;
+
+    //    @include media('<phone') {
+    //      font-size: calc($vw / 750 * 10);
+    //    }
+}
+
+body {
+    font-family: $font-ferry;
+    font-size  : 1.6rem;
+    background-color: lightcoral;
+
+   
+    a{
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+    }
+}

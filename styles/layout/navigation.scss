@@ -1,0 +1,30 @@
+.navigation {
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    width           : 100%;
+    height          : 12.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation__wrapper {
+    width: 177.9rem;
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation__link{
+    // @extend %logo-45;
+    font-family: $font-ferry;
+    font-size  : 4.5rem;
+    color: white;
+}
+.navigation__menu{
+    position: fixed;
+    top:5.4rem;
+    right: 7rem;
+}

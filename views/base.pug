@@ -1,0 +1,26 @@
+block variables
+doctype html 
+html(class= isDesktop ? "desktop" : isTablet ? "tablet" : isPhone ? "phone" : "" lang="en")  
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        base(href="/")
+
+        title Affo
+
+        meta(name="description" content="My portfolio")
+
+        link(rel="stylesheet" href="main.css")
+
+    body 
+        //- include ./partials/preloader
+        include ./partials/navigation
+
+        .content#content(data-template=template)
+            block content
+
+        //- script.
+        //-  window.ASSETS = !{JSON.stringify(assets).replace(/<\//g, "<\\/")}   
+          
+        script(src="main.js")   
