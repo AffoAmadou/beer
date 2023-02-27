@@ -1,0 +1,16 @@
+extends ../base.pug 
+
+block variables     
+    - var template = 'details'
+
+block content 
+    .detail
+        .details__content 
+            .details__content__wrapper
+                .details__image__wrapper
+                    figure.details__image__media 
+                        img.details__image(src=beer.image_src)
+                .details__description__wrapper  
+                    h2.details__title=beer.name
+                    p.details__tagline=beer.tagline
+                    p.details__description=beer.description

@@ -1,0 +1,54 @@
+.details__content__wrapper {
+    width           : 144.522rem;
+    height          : 69.2rem;
+    background-color: antiquewhite;
+
+    position: absolute;
+
+    top   : 22.2rem;
+    bottom: 16.6rem;
+    left  : 21.58rem;
+    right : 25.9rem;
+
+    display: flex;
+
+}
+
+.details__image__wrapper {
+    width: 74.422rem;
+}
+
+.details__image__media {
+    width   : 16.3rem;
+    height  : 63.5rem;
+    position: relative;
+}
+
+.details__image {
+    @extend %cover;
+    object-fit: cover;
+}
+
+.details__description__wrapper {
+    width           : 70.1rem;
+    height          : 100%;
+    background-color: #dbe36b;
+    color           : white;
+    display         : flex;
+    flex-direction  : column;
+}
+
+.details__title {
+    font-size: 8.1rem;
+    width    : 56rem;
+}
+
+.details__tagline {
+    font-family: $font-futura;
+}
+
+.details__description {
+    font-family: $font-futura;
+    width      : 50.1rem;
+    align-self: flex-end;
+}
