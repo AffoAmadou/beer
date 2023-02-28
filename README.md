@@ -32,7 +32,7 @@ npm run start
 
 Contributors names and contact info
 
-ex. AMADOU Affo
+AMADOU Affo
 
 ## Version History
 
