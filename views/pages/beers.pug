@@ -14,15 +14,10 @@ block content
                                 figure.beers__gallery__media(data-index=index)
                                     img.beers__gallery__media__image( src=beer.image_url alt=beer.name)
                                 .beers__description__wrapper 
-                                    p.beers__description=beer.brewers_tips
+                                    p.beers__description(data-animation="paragraph")=beer.brewers_tips
                                 .beers__name__wrapper
-                                    p.beers__name=beer.name
+                                    p.beers__name(data-animation="title")=beer.name
 
 
 
-            //- .home__gallery 
-            //-     .home__gallery__wrapper
-            //-         each project, index in projects
-            //-             a.home__gallery__link(href=Link(home.data.projects[index].projects_project))
-            //-                 figure.home__gallery__media(data-index=index)
-            //-                     img.home__gallery__media__image(alt=project.data.image.alt data-src=project.data.image.url)
+            

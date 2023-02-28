@@ -1,23 +1,24 @@
 //! Description: This is the main file for the application. It is the entry point for the application.
-
+require('dotenv').config();
 // Importing module
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const { response } = require('express');
+const http = require('http');
+
+const timeago = require('timeago.js');
 
 
-// Setting up the express app
+// Setting up the express app, the port and the server
 const app = express();
-const port = 3010;
+const port = process.env.PORT || 3010;
 
-//Write the code below in a async function and call it in the app.get function
-//This is because the axios.get is an async function and it will take some time to get the data from the api
-//So you need to wait for the data to be fetched before you can use it
-//So you need to use the async await syntax
-//You can read more about it here: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
-// This is the code you need to write
+// Api call to get all beers
 const getBeers = async () => {
     try {
         const response = await axios.get('https://api.punkapi.com/v2/beers');
@@ -27,23 +28,30 @@ const getBeers = async () => {
         console.error(error);
     }
 };
+// Api call to get a random beer
+const getRandomBeer = async () => {
+    try {
+        const response = await axios.get('https://api.punkapi.com/v2/beers/random');
 
-//This is how you call the function
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 
-
-
-
-
-
+// Setting up the static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.resolve(__dirname, 'images')));
+app.use('/node', express.static(path.resolve(__dirname, 'node_modules')));
+app.use('canvas', express.static(path.resolve(__dirname, 'app/components/Canvas')));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 app.locals.basedir = app.get('views');
 
 
 
+// Setting up the routes, home, beers, random-beer, beers/:id, contact
 app.get('/', async (req, res) => {
     const beer = await getBeers();
 
@@ -62,10 +70,10 @@ app.get('/beers', async (req, res) => {
 });
 
 app.get('/random-beer', async (req, res) => {
-    const beer = await getBeers();
-    let randomBeer = beer[Math.floor(Math.random() * beer.length)];
+    const beer = await getRandomBeer();
+    console.log(beer);
     res.render('pages/details', {
-        beer: randomBeer,
+        beer: beer[0],
     });
 });
 
@@ -79,6 +87,20 @@ app.get('/beers/:id', async (req, res) => {
     });
 });
 
-app.listen(port, () => {
+app.get('/contact', (req, res) => {
+    res.render('pages/contact', {
+
+    });
+});
+
+// Setting up the socket.io, listening to the chat message event
+io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', { msg: msg, ans: "Quelqun va vous repondre" });
+    });
+});
+
+
+server.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
