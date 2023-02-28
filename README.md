@@ -11,11 +11,22 @@ website using pug node and punk api
 ### Dependencies
 
 * npm i to install all the dependencies
+```
+npm run i
+```
+
+### Installing
+
+* How/where to download your program
+* Any modifications needed to be made to files/folders
 
 ### Executing program
 
 * npm run start to start the project
 * You should have a .env file but it will work without it 
+```
+npm run start
+```
 
 ## Authors
 
