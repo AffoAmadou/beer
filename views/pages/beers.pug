@@ -1,0 +1,23 @@
+extends ../base.pug 
+
+block variables     
+    - var template = 'beers'
+
+block content 
+    .beers
+        .beers__content
+            .beers__gallery 
+                .beers__gallery__wrapper
+                    each beer, index in beers
+                        a.beers__gallery__link(href="beers/"+beer.id)
+                            .beers__content
+                                figure.beers__gallery__media(data-index=index)
+                                    img.beers__gallery__media__image( src=beer.image_url alt=beer.name)
+                                .beers__description__wrapper 
+                                    p.beers__description(data-animation="paragraph")=beer.brewers_tips
+                                .beers__name__wrapper
+                                    p.beers__name(data-animation="title")=beer.name
+
+
+
+            

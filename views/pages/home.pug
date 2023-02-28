@@ -1,0 +1,18 @@
+extends ../base.pug 
+
+block variables     
+    - var template = 'home'
+
+block content 
+    .home
+        .home__content#home__content
+            .home__rect__blue
+            .home__rect__white 
+            .home__rect__green
+            .home__rect__black
+            p.home__craft(data-animation="title")='craft'
+            p.home__beer(data-animation="title")='your beer'
+            p.home__adventure(data-animation="title")='adventure'
+            p.home__one(data-animation="title")='1'
+            img.home__pink(src='/images/pink.png', alt="")
+            

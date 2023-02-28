@@ -1,0 +1,67 @@
+block variables
+doctype html 
+html(class= isDesktop ? "desktop" : isTablet ? "tablet" : isPhone ? "phone" : "" lang="en")  
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+        base(href="/")
+
+        title Affo
+
+        meta(name="description" content="My portfolio")
+
+        link(rel="stylesheet" href="main.css")
+
+    body 
+        //- include ./partials/preloader
+        include ./partials/navigation
+
+        .content#content(data-template=template)
+            block content
+
+        //- script.
+        //-  window.ASSETS = !{JSON.stringify(assets).replace(/<\//g, "<\\/")}   
+
+        script(src="main.js")   
+        script(src="/socket.io/socket.io.js")
+        script(src="/node/timeago.js/dist/timeago.min.js")
+        script(type="module").
+            var socket = io();
+            var messages = document.getElementById('messages');
+            var form = document.getElementById('form');
+            var input = document.getElementById('input');
+
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+                }
+            });
+
+            socket.on('chat message', function(msg) {
+                var item = document.createElement('li');
+                item.setAttribute('datetime',new Date().toISOString())
+                messages.appendChild(item);
+                var item_m = document.createElement('li');
+                item_m.textContent = msg.msg ;
+                messages.appendChild(item_m);
+                timeago.render(item, 'en_US');
+
+
+                var item2 = document.createElement('li');
+                item2.setAttribute('datetime',new Date().toISOString())
+                messages.appendChild(item2);
+                var item_a = document.createElement('li');
+                item_a.textContent = msg.ans ;
+                messages.appendChild(item_a);
+                timeago.render(item2, 'en_US');
+            
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+        include ./partials/footer
+
+
+                    

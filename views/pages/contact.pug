@@ -1,0 +1,12 @@
+extends ../base.pug 
+
+block variables     
+    - var template = 'contact'
+
+block content 
+    .contact
+        .contact__content
+            ul#messages
+            form#form(action="")     
+                input#input
+                button#submit(type="submit") Send

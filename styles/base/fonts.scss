@@ -1,0 +1,17 @@
+@font-face {
+    font-family: $font-ferry;
+    src        : url('/fonts/Ferry.woff2') format('woff2'),
+        url('/fonts/Ferry.woff') format('woff');
+    font-weight : normal;
+    font-style  : normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: $font-futura;
+    src        : url('/fonts/Futura.woff2') format('woff2'),
+        url('/fonts/Futura.woff') format('woff');
+    font-weight : normal;
+    font-style  : normal;
+    font-display: swap;
+}
