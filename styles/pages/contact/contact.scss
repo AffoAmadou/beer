@@ -9,6 +9,7 @@
     height         : 6rem;
     box-sizing     : border-box;
     backdrop-filter: blur(10px);
+    z-index        : 2;
 }
 
 #input {
